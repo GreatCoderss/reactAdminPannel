@@ -1,6 +1,14 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles(() => ({
+  //common
+  navImg: {
+    width: "35px",
+    height: "auto",
+    borderRadius: "50%",
+  },
+
+  //header
   wrapper: {
     width: "100%",
     height: "calc(100vh - 70px)",

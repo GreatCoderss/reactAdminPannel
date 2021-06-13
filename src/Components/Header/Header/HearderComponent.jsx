@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Box, Grid, Typography } from "@material-ui/core";
-import NavbarComponent from "./NavbarComponent";
 import { useStyles } from "./HeaderStyle";
+import NavbarComponent from "./NavbarComponent";
 
 export default function HearderComponent() {
   const classes = useStyles();
