@@ -59,30 +59,17 @@ export const useStyles = makeStyles((theme) => {
 
     navlink: {
       color: blueGrey[700],
-      fontWeight: "bold",
       transition: "0.8s",
-      "& span": {
-        TextDecoder: "none",
-        color: blue["A400"],
-      },
-      "&:hover div": {
+      "&:hover  div": {
         color: blue["A400"],
       },
     },
     selectedNav: {
-      color: blue["A600"],
+      color: `${blue[800]} !important`,
       fontWeight: " bolder",
+      " & div": {
+        color: `${blue[800]} !important`,
+      },
     },
-    // navlinkIcon: {
-    //   color: blueGrey[700],
-    //   fontWeight: "bold",
-    //   transition: "0.8s",
-    //   "&:hover": {
-    //     color: blue["A400"],
-    //   },
-    //   "&:active": {
-    //     color: blue["A800"],
-    //   },
-    // },
   };
 });

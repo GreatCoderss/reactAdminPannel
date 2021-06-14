@@ -17,7 +17,7 @@ export default function SidenavData({ handleDrawerToggler }) {
     { label: "Add Post", link: "/blog/add", icon: <PostAddIcon /> },
     {
       label: "Notification",
-      link: "/Notification",
+      link: "/notification",
       icon: <NotificationsActiveIcon />,
     },
     { label: "logout", link: "/logout", icon: <ExitToAppIcon /> },
@@ -26,22 +26,16 @@ export default function SidenavData({ handleDrawerToggler }) {
   return (
     <List>
       {listItemData.map((item, i) => (
-        <NavLink
+        <ListItem
+          exact
           key={i}
+          component={NavLink}
           to={item.link}
           className={classes.navlink}
-          activeClassName={classes.selectedNav}
-          style={{ TextDecoration: "none" }}>
-          <ListItem
-            button
-            className={classes.nested}
-            onClick={handleDrawerToggler}>
-            <ListItemIcon style={{ color: "inherit" }}>
-              {item.icon}
-            </ListItemIcon>
-            <ListItemText>{item.label}</ListItemText>
-          </ListItem>
-        </NavLink>
+          activeClassName={classes.selectedNav}>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText>{item.label}</ListItemText>
+        </ListItem>
       ))}
     </List>
   );

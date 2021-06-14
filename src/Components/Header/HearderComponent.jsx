@@ -1,8 +1,13 @@
 import React, { Fragment } from "react";
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box } from "@material-ui/core";
+import { Route, Switch } from "react-router-dom";
 import { useStyles } from "./HeaderStyle";
 import NavbarComponent from "./NavbarComponent";
 import Sidenav from "./Sidenav";
+import Dashboard from "../BodyComponent/Dashboard";
+import Notification from "./ActionTab/Notification";
+import AddPost from "../BodyComponent/AddPost";
+import BlogPost from "../BodyComponent/BlogPost";
 
 export default function HearderComponent() {
   const classes = useStyles();
@@ -20,14 +25,12 @@ export default function HearderComponent() {
         handleDrawerToggle={handleDrawerToggle}
       />
       <Box className={classes.wrapper}>
-        <Typography variant='h6'>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-          assumenda eius amet quod nihil voluptas sunt quo sequi at reiciendis
-          quidem eligendi odio similique aperiam dolorem veniam sint deleniti,
-          iusto corrupti. Quae distinctio aspernatur aliquid, consequatur
-          exercitationem quisquam qui id minus alias omnis totam iusto incidunt
-          sint, animi, blanditiis doloremque.
-        </Typography>
+        <Switch>
+          <Route exact path='/' render={() => <Dashboard />} />
+          <Route path='/blog' render={() => <BlogPost />} />
+          <Route exact path='/blog/add' render={() => <AddPost />} />
+          <Route exact path='/notification' render={() => <Notification />} />
+        </Switch>
       </Box>
     </Fragment>
   );
