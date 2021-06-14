@@ -30,11 +30,13 @@ export default function NavbarComponent({ handleDrawerToggle }) {
             {"<AdminPannel />"}
           </Typography>
         </Box>
-        <Box>
-          <Notification />
-          <Messages />
-          <Profile />
-        </Box>
+        <Hidden xsDown>
+          <Box>
+            <Notification />
+            <Messages />
+            <Profile />
+          </Box>
+        </Hidden>
       </Toolbar>
     </AppBar>
   );
