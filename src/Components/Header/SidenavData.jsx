@@ -9,7 +9,7 @@ import PostAddIcon from "@material-ui/icons/PostAdd";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-export default function SidenavData() {
+export default function SidenavData({ handleDrawerToggler }) {
   const classes = useStyles();
   const listItemData = [
     { label: "Dashboard", link: "/", icon: <DashboardIcon /> },
@@ -26,17 +26,22 @@ export default function SidenavData() {
   return (
     <List>
       {listItemData.map((item, i) => (
-        <ListItem
+        <NavLink
           key={i}
-          component={NavLink}
           to={item.link}
           className={classes.navlink}
-          activeClassName={classes.navlinkActive}>
-          <ListItemIcon className={classes.navlinkIcon}>
-            {item.icon}
-          </ListItemIcon>
-          <ListItemText>{item.label}</ListItemText>
-        </ListItem>
+          activeClassName={classes.selectedNav}
+          style={{ TextDecoration: "none" }}>
+          <ListItem
+            button
+            className={classes.nested}
+            onClick={handleDrawerToggler}>
+            <ListItemIcon style={{ color: "inherit" }}>
+              {item.icon}
+            </ListItemIcon>
+            <ListItemText>{item.label}</ListItemText>
+          </ListItem>
+        </NavLink>
       ))}
     </List>
   );
