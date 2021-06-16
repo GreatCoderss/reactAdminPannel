@@ -2,7 +2,6 @@ import React from "react";
 import {
   AppBar,
   Box,
-  colors,
   Hidden,
   IconButton,
   Toolbar,

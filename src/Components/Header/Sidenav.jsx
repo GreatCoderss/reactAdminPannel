@@ -9,7 +9,6 @@ export default function Sidenav({
   handleDrawerToggle,
 }) {
   const classes = useStyles();
-  const handleClose = () => {};
 
   return (
     <nav className={classes.drawer} aria-label='mailbox folders'>
