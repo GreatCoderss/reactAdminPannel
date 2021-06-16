@@ -3,8 +3,13 @@ import React from "react";
 import { useStyles } from "./HeaderStyle";
 import SidenavData from "./SidenavData";
 
-export default function Sidenav({ mobileOpen, handleDrawerToggle }) {
+export default function Sidenav({
+  mobileOpen,
+  handleDrawerClose,
+  handleDrawerToggle,
+}) {
   const classes = useStyles();
+  const handleClose = () => {};
 
   return (
     <nav className={classes.drawer} aria-label='mailbox folders'>
@@ -21,7 +26,7 @@ export default function Sidenav({ mobileOpen, handleDrawerToggle }) {
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}>
-          <SidenavData />
+          <SidenavData handleDrawerClose={handleDrawerClose} />
         </Drawer>
       </Hidden>
       {/* visible on screen greater than 600px */}
@@ -32,7 +37,7 @@ export default function Sidenav({ mobileOpen, handleDrawerToggle }) {
           }}
           variant='permanent'
           open>
-          <SidenavData />
+          <SidenavData handleDrawerClose={handleDrawerClose} />
         </Drawer>
       </Hidden>
     </nav>

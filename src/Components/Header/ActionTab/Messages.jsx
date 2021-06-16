@@ -26,9 +26,9 @@ export default function Messages() {
   };
 
   const dropDownData = [
-    { label: "Tiger", description: "commodi dicta ..." },
-    { label: "T.S Suriya", description: "ipsum dolor sit ..." },
-    { label: "mahakaal", description: "llum porro saepe ..." },
+    { label: "GreatCoders", description: "commodi dicta ..." },
+    { label: "Bholenath", description: "ipsum dolor sit ..." },
+    { label: "Mahakaal", description: "llum porro saepe ..." },
   ];
 
   return (

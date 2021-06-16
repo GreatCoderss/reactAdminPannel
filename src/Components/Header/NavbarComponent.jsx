@@ -2,6 +2,7 @@ import React from "react";
 import {
   AppBar,
   Box,
+  colors,
   Hidden,
   IconButton,
   Toolbar,
@@ -21,21 +22,21 @@ export default function NavbarComponent({ handleDrawerToggle }) {
     <AppBar>
       <Toolbar className={classes.toolbar}>
         <Box style={{ display: "flex" }}>
-          <Hidden mdUp>
-            <IconButton color='inherit' onClick={handleDrawerToggle}>
-              <MenuRoundedIcon />
-            </IconButton>
-          </Hidden>
           <Typography variant='h6' className={classes.logo}>
             {"<AdminPannel />"}
           </Typography>
         </Box>
-        <Hidden xsDown>
+        <Hidden smDown>
           <Box>
             <Notification />
             <Messages />
             <Profile />
           </Box>
+        </Hidden>
+        <Hidden mdUp>
+          <IconButton color='inherit' onClick={handleDrawerToggle}>
+            <MenuRoundedIcon />
+          </IconButton>
         </Hidden>
       </Toolbar>
     </AppBar>

@@ -15,6 +15,14 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
     textTransform: "capitalize",
   },
+  responsiveImg: {
+    width: "100%",
+    height: "auto",
+  },
+  cardImage: {
+    maxHeight: "150px !important",
+    overflowY: "hidden",
+  },
 
   // dashboard
   cardLabel: {
@@ -62,6 +70,13 @@ export const useStyles = makeStyles((theme) => ({
       left: "25%",
     },
   },
+  progressbarContainer: {
+    display: "flex",
+    flexFlow: "row wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "250px",
+  },
   //userOverview section
   cardTitle: {
     color: colors.baseDark,
@@ -69,5 +84,13 @@ export const useStyles = makeStyles((theme) => ({
   generalGraph: {
     width: "100%",
     height: "300px",
+  },
+
+  //footer
+  footer: {
+    padding: "8px 24px 16px 270px",
+    [theme.breakpoints.down("sm")]: {
+      padding: "8px 24px 16px 24px",
+    },
   },
 }));

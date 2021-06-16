@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
   Avatar,
+  Box,
   Card,
   CardContent,
+  CircularProgress,
   Divider,
   Grid,
   List,
@@ -46,19 +48,25 @@ export default function Section3() {
           </CardContent>
           <Divider />
           <List>
-            {authors.map((item, i) => (
-              <ListItem key={i}>
-                <ListItemIcon>
-                  <Avatar
-                    src={item.picture}
-                    alt={item.text}
-                    className={classes.avatar}></Avatar>
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.firstName}
-                  secondary={item.email}></ListItemText>
-              </ListItem>
-            ))}
+            {authors.length === 0 ? (
+              <Box className={classes.progressbarContainer}>
+                <CircularProgress color='primary' />
+              </Box>
+            ) : (
+              authors.map((item, i) => (
+                <ListItem key={i}>
+                  <ListItemIcon>
+                    <Avatar
+                      src={item.picture}
+                      alt={item.text}
+                      className={classes.avatar}></Avatar>
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.firstName}
+                    secondary={item.email}></ListItemText>
+                </ListItem>
+              ))
+            )}
           </List>
         </Card>
       </Grid>
@@ -67,24 +75,30 @@ export default function Section3() {
         <Card component={Paper}>
           <CardContent>
             <Typography variant='h6' className={classes.cardTitle} align='left'>
-              Latest Post
+              Latest Posts
             </Typography>
           </CardContent>
           <Divider />
           <List>
-            {posts.map((item, i) => (
-              <ListItem key={i}>
-                <ListItemIcon>
-                  <Avatar
-                    src={item.image}
-                    alt={item.text}
-                    className={classes.avatar}></Avatar>
-                </ListItemIcon>
-                <ListItemText className={classes.listTitle}>
-                  {item.text}
-                </ListItemText>
-              </ListItem>
-            ))}
+            {posts.length === 0 ? (
+              <Box className={classes.progressbarContainer}>
+                <CircularProgress color='primary' />
+              </Box>
+            ) : (
+              posts.map((item, i) => (
+                <ListItem key={i}>
+                  <ListItemIcon>
+                    <Avatar
+                      src={item.image}
+                      alt={item.text}
+                      className={classes.avatar}></Avatar>
+                  </ListItemIcon>
+                  <ListItemText className={classes.listTitle}>
+                    {item.text}
+                  </ListItemText>
+                </ListItem>
+              ))
+            )}
           </List>
         </Card>
       </Grid>

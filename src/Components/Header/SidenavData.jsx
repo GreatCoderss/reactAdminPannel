@@ -1,5 +1,11 @@
 import React from "react";
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import {
+  Button,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import { useStyles } from "./HeaderStyle";
 
@@ -9,12 +15,12 @@ import PostAddIcon from "@material-ui/icons/PostAdd";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-export default function SidenavData({ handleDrawerToggler }) {
+export default function SidenavData({ handleDrawerClose }) {
   const classes = useStyles();
   const listItemData = [
     { label: "Dashboard", link: "/", icon: <DashboardIcon /> },
     { label: "Blog Post", link: "/blog", icon: <BookIcon /> },
-    { label: "Add Post", link: "/blog/add", icon: <PostAddIcon /> },
+    { label: "Link 1", link: "/link1", icon: <PostAddIcon /> },
     {
       label: "Notification",
       link: "/notification",
@@ -26,16 +32,21 @@ export default function SidenavData({ handleDrawerToggler }) {
   return (
     <List>
       {listItemData.map((item, i) => (
-        <ListItem
-          exact
-          key={i}
-          component={NavLink}
-          to={item.link}
-          className={classes.navlink}
-          activeClassName={classes.selectedNav}>
-          <ListItemIcon>{item.icon}</ListItemIcon>
-          <ListItemText>{item.label}</ListItemText>
-        </ListItem>
+        <Button
+          size='small'
+          onClick={() => handleDrawerClose()}
+          className={classes.navButton}>
+          <ListItem
+            exact
+            key={i}
+            component={NavLink}
+            to={item.link}
+            className={classes.navlink}
+            activeClassName={classes.selectedNav}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText>{item.label}</ListItemText>
+          </ListItem>
+        </Button>
       ))}
     </List>
   );

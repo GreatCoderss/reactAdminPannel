@@ -7,14 +7,15 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-import { useStyles } from "./BodyStyles";
-import GraphComponent from "../../Common/GraphComponent";
 import { blue, green, lightBlue, red, teal } from "@material-ui/core/colors";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
-import BlogGraph from "./Dashboard/BlogGraph";
-import { fakeArrayGenrator } from "../../Common/fakeDataGenetator";
-import Section3 from "./Dashboard/Section3";
+import { useStyles } from "../BodyStyles";
+import GraphComponent from "../../../Common/GraphComponent";
+import BlogGraph from "./BlogGraph";
+import Section3 from "./Section3";
+import { fakeArrayGenrator } from "../../../Common/fakeDataGenetator";
+import { PageHeader } from "../../../Common/Components";
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -93,21 +94,8 @@ export default function Dashboard() {
   return (
     <Box mt={2}>
       {/* //title section  */}
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography variant='button' className={classes.pageLabel}>
-            {" "}
-            Dashboard{" "}
-          </Typography>
-          <Typography
-            variant='h5'
-            component='h2'
-            className={classes.pageHeader}>
-            {" "}
-            Blog Overview
-          </Typography>
-        </Grid>
-      </Grid>
+      <PageHeader label='Dashboard' title='Blog Overview' />
+
       <Grid container spacing={1} className={classes.section}>
         {DisplayData.map((item, i) => (
           <Grid key={i} item xs={6} sm={3} md={3}>

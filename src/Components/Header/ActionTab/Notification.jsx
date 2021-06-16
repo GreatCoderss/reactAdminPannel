@@ -27,9 +27,9 @@ export default function Notification() {
   };
 
   const dropDownData = [
-    { label: "Modi", description: "likes your post ..." },
-    { label: "Yogi", description: "connented on your feeds ..." },
-    { label: "Yogi", description: "connented on your feeds ..." },
+    { label: "Alex", description: "likes your post ..." },
+    { label: "Breza", description: "connented on your feeds ..." },
+    { label: "Kayes", description: "connented on your feeds ..." },
   ];
 
   return (

@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { blue, blueGrey, red } from "@material-ui/core/colors";
+import { blue, blueGrey } from "@material-ui/core/colors";
 
 export const useStyles = makeStyles((theme) => {
   console.log(theme.breakpoints);
@@ -9,8 +9,8 @@ export const useStyles = makeStyles((theme) => {
       width: "35px",
       height: "35px",
       borderRadius: "50%",
-      color: "inherit",
-      backgroundColor: red[500],
+      color: "White",
+      backgroundColor: blue["A400"],
     },
 
     //header
@@ -19,8 +19,8 @@ export const useStyles = makeStyles((theme) => {
       minHeight: "100vh",
       height: "auto",
       background: "#efefef",
-      padding: "70px 24px 24px 270px",
       boxSizing: "border-box",
+      padding: "70px 24px 24px 270px",
       [theme.breakpoints.down("sm")]: {
         padding: "70px 24px 24px 24px",
       },
@@ -64,6 +64,7 @@ export const useStyles = makeStyles((theme) => {
         color: blue["A400"],
       },
     },
+    navButton: { width: "100%", textTransform: "capitalize" },
     selectedNav: {
       color: `${blue[800]} !important`,
       fontWeight: " bolder",
