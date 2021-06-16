@@ -1,7 +1,6 @@
-import { blue } from "@material-ui/core/colors";
 import { Chart, registerables } from "chart.js";
 
-export default function GraphComponent({ id }) {
+export default function GraphComponent({ id, data, bgColor, brColor }) {
   var ctx = document.getElementById(id).getContext("2d");
 
   Chart.register(...registerables);
@@ -12,11 +11,10 @@ export default function GraphComponent({ id }) {
       datasets: [
         {
           label: "My First Dataset",
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: data,
           fill: true,
-
-          borderColor: "rgb(75, 192, 192)",
-          backgroundColor: "rgba(75, 192, 192,0.1)",
+          borderColor: brColor,
+          backgroundColor: bgColor,
           tension: 0.5,
         },
       ],
@@ -44,5 +42,41 @@ export default function GraphComponent({ id }) {
     },
   });
 
+  return myChart;
+}
+
+export function lineGraphComponent({ id, type, dataSets, xAxisLabels }) {
+  var ctx = document.getElementById(id).getContext("2d");
+
+  Chart.register(...registerables);
+  var myChart = new Chart(ctx, {
+    type: type ? type : "line",
+    data: {
+      labels: xAxisLabels,
+      datasets: dataSets,
+    },
+    options: {
+      scales: {
+        x: {
+          display: type === "pie" ? false : true,
+          grid: {
+            color: "transparent",
+          },
+        },
+
+        y: {
+          display: type === "pie" ? false : true,
+          grid: {
+            // color: "transparent",
+          },
+        },
+      },
+      plugins: {
+        legend: { position: "bottom" },
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
   return myChart;
 }

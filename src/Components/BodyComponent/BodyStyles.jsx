@@ -2,6 +2,9 @@ import { makeStyles } from "@material-ui/core";
 import { colors } from "../Theme";
 
 export const useStyles = makeStyles((theme) => ({
+  section: {
+    margin: theme.spacing(2, 0),
+  },
   pageLabel: {
     color: colors.baselight,
     marginBottom: theme.spacing(1),
@@ -34,24 +37,37 @@ export const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1, 0),
     },
   },
-
   displayCard: {
     position: "relative",
     padding: "0px !important",
+    minHeight: "140px",
+    height: "auto",
   },
   displayCardGraph: {
     width: "100%",
-    height: "150px",
-  },
-  cardDataContent: {
-    width: "100%",
-    height: "100%",
+    height: "60px !important",
     position: "absolute",
-    top: "0",
-    left: "0",
-    backgroundColor: "transparent",
-    display: "flex",
-    flexFlow: "column",
-    justifyContent: "center",
+    bottom: "0px",
+    left: "0px",
+    [theme.breakpoints.down("xs")]: {
+      height: "45px !important",
+    },
+  },
+  ratio: {
+    position: "absolute",
+    top: "50%",
+    left: "33%",
+    [theme.breakpoints.down("xs")]: {
+      top: "45%",
+      left: "25%",
+    },
+  },
+  //userOverview section
+  cardTitle: {
+    color: colors.baseDark,
+  },
+  generalGraph: {
+    width: "100%",
+    height: "300px",
   },
 }));

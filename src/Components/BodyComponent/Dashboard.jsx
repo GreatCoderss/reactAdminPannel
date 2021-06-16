@@ -1,29 +1,93 @@
 import React, { useEffect, useState } from "react";
-import { Box, Card, CardContent, Grid, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import { useStyles } from "./BodyStyles";
 import GraphComponent from "../../Common/GraphComponent";
+import { blue, green, lightBlue, red, teal } from "@material-ui/core/colors";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import BlogGraph from "./Dashboard/BlogGraph";
+import { fakeArrayGenrator } from "../../Common/fakeDataGenetator";
+import Section3 from "./Dashboard/Section3";
 
 export default function Dashboard() {
   const classes = useStyles();
   const [hasFetched, setHasFetched] = useState(false);
+
   const DisplayData = [
-    { label: "Post", value: "2,390" },
-    { label: "Pages", value: "180" },
-    { label: "New Visitor", value: "450" },
-    { label: "Total Visitor", value: "37450" },
+    {
+      label: "Post",
+      value: "2,390",
+      icon: <ArrowDropUpIcon />,
+      iconLabel: "7%",
+    },
+    {
+      label: "Pages",
+      value: "180",
+      icon: <ArrowDropUpIcon />,
+      iconLabel: "5.3%",
+    },
+    {
+      label: "New Visitor",
+      value: "450",
+      icon: <ArrowDropDownIcon />,
+      iconLabel: "4.1%",
+    },
+    {
+      label: "Total Visitor",
+      value: "37450",
+      icon: <ArrowDropDownIcon />,
+      iconLabel: "2.5%",
+    },
+  ];
+
+  const GraphData = [
+    {
+      label: "Post",
+      data: fakeArrayGenrator({ length: 10, digit: 100 }),
+      bgColor: lightBlue[50],
+      brColor: blue["A200"],
+    },
+    {
+      label: "Pages",
+      data: fakeArrayGenrator({ length: 10, digit: 100 }),
+      bgColor: blue[50],
+      brColor: blue["A700"],
+    },
+    {
+      label: "New Visitor",
+      data: fakeArrayGenrator({ length: 10, digit: 100 }),
+      bgColor: green[50],
+      brColor: green["A400"],
+    },
+    {
+      label: "Total Visitor",
+      data: fakeArrayGenrator({ length: 10, digit: 100 }),
+      bgColor: teal[50],
+      brColor: teal["A400"],
+    },
   ];
 
   //updating the graph
   useEffect(() => {
     if (!hasFetched) {
-      console.log("DataId", Object.values(DisplayData));
-      Object.values(DisplayData).map((item) => {
-        GraphComponent({ id: item.label });
-        console.log(item.label);
-      });
+      GraphData.map((item) =>
+        GraphComponent({
+          id: item.label,
+          data: item.data,
+          bgColor: item.bgColor,
+          brColor: item.brColor,
+        })
+      );
       setHasFetched(true);
-      console.log("graph runs ");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DisplayData]);
 
   return (
@@ -44,9 +108,9 @@ export default function Dashboard() {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} className={classes.section}>
         {DisplayData.map((item, i) => (
-          <Grid item xs={6} sm={3} md={3}>
+          <Grid key={i} item xs={6} sm={3} md={3}>
             <Card>
               <CardContent className={classes.displayCard}>
                 <canvas
@@ -65,13 +129,27 @@ export default function Dashboard() {
                     className={classes.cardHeader}>
                     {item.value}
                   </Typography>
+                  <Box className={classes.ratio}>
+                    <Button
+                      startIcon={item.icon}
+                      size='small'
+                      style={{
+                        color: item.label[0] === "P" ? green[700] : red[400],
+                        fontSize: "1.1rem",
+                      }}>
+                      {item.iconLabel}
+                    </Button>
+                  </Box>
                 </Box>
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
-      {/* <canvas id='myChart' width='400' height='400'></canvas> */}
+
+      {/* section blog graph  */}
+      <BlogGraph />
+      <Section3 />
     </Box>
   );
 }

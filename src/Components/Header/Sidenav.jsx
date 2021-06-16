@@ -1,15 +1,6 @@
-import {
-  Drawer,
-  Hidden,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
+import { Drawer, Hidden } from "@material-ui/core";
 import React from "react";
 import { useStyles } from "./HeaderStyle";
-import CreateIcon from "@material-ui/icons/Create";
 import SidenavData from "./SidenavData";
 
 export default function Sidenav({ mobileOpen, handleDrawerToggle }) {
